@@ -2,16 +2,19 @@ package oldshelf;
 
 public class Fiction extends Book {
 
-	/* TODO: Add most strict modifiers here*/ String name;
-	// TODO: change 
-	/**
-	 * type is  a per instance object and it is initialized only once.
-	 * 
-	 */
+	private final String name;
 	private static FictionType type;
-	public Fiction(String title) {
-		super(title);
-		// TODO  correct the above.
+	public  Fiction(String title,FictionType comedy) {
+		this.name=title;
+		Fiction.type=comedy;
+	}
+	public String getName()
+	{
+       return this.name;
+	}
+	@Override
+	public String toString() {
+		return "Name : " + this.name + "\nFictional Type : " + type + "\n";
 	}
 
 }

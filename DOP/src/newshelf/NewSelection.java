@@ -12,29 +12,21 @@ public class NewSelection {
 	 */
 	public static String getAgeOrTitle(Object o) {
 		
-		 
-			if(o instanceof Comic)
-			{
-				return ((Comic)o).title();
-			}
-			else if(o instanceof Fiction)
-			{
-				return ((Fiction)o).name();
-			}
-			else if(o instanceof TextBook)
-			{
-				return ((TextBook)o).subject();
-			}
-			else
-			  return null;
+		 return switch(o)
+		 {
+			case Comic comic->comic.title();
+			case Fiction fiction -> fiction.name();
+			case TextBook textBook -> textBook.subject();
+			default -> null;
+		 };
 	}
 
 	public static void main(String[] args) {
 		
 		//  Write a test code here and execute and text.
-		TextBook t = new TextBook("Object Oriented Systems");
-		Comic c = new Comic("Batman: The Killing Joke", 30);
-		Fiction f = new Fiction("Good Omens", FictionType.Comedy);
+		IBook t = new TextBook("Object Oriented Systems");
+		IBook c = new Comic("Batman: The Killing Joke", 30);
+		IBook f = new Fiction("Good Omens", FictionType.Comedy);
 		System.out.println("Verifying ToString method of books : ");
 		System.out.println(t.toString() + "\n");
 		System.out.println(c.toString() + "\n");
